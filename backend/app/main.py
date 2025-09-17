@@ -12,6 +12,14 @@ from app.services.background_sync_service import background_sync_service
 from app.services.database_listener_service import database_listener_service
 from app.services.session_cleanup_service import session_cleanup_service
 
+# --- Add this block at the top of your file ---
+google_creds = os.environ.get("GOOGLE_CREDENTIALS_JSON")
+if google_creds:
+    with open("/app/google-credentials.json", "w") as f:
+        f.write(google_creds)
+# --- End block ---
+
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
